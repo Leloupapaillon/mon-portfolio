@@ -1,0 +1,1041 @@
+/* ==================================================
+   1. POLICES
+   Les fichiers WOFF sont les polices du site.
+   Pour utiliser uniquement les polices de l'ordinateur,
+   supprimer ces trois blocs et changer les variables
+   --font-title et --font-text dans la section suivante.
+   ================================================== */
+
+@font-face {
+  font-family: 'Editorial';
+  src: url('assets/editorial.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Editorial';
+  src: url('assets/editorial-italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'SoftSans';
+  src: url('assets/sans.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ==================================================
+   2. COULEURS ET RÉGLAGES 
+   
+   ================================================== */
+
+:root {
+  --background: #f8f4ed;
+  --background-soft: #f0e9df;
+  --text: #302c28;
+  --text-soft: #71685f;
+  --accent: #965643;
+  --pink: #ecd5c8;
+  --pink-soft: #f3e4dd;
+  --sage: #e9ecdf;
+  --border: #ded4c7;
+  --white: #fffdf8;
+  --font-title: 'Editorial', Georgia, serif;
+  --font-text: 'SoftSans', Arial, sans-serif;
+  --page-width: 1120px;
+}
+
+/* ==================================================
+   3. BASE COMMUNE À TOUTES LES RUBRIQUES
+   ================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 25px;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text);
+  font-family: var(--font-text);
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+h1, h2, h3, h4, p, figure {
+  margin: 0;
+}
+
+h1, h2, h3, h4 {
+  font-weight: 400;
+}
+
+h2 {
+  font-family: var(--font-title);
+  font-size: 60px;
+  letter-spacing: -1px;
+  line-height: 1.1;
+}
+
+h2 em {
+  color: var(--accent);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  
+}
+
+button {
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+ul {
+  padding-left: 20px;
+  margin: 12px 0;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 5px;
+}
+
+::selection {
+  background: var(--pink);
+}
+
+.container {
+  width: calc(100% - 64px);
+  max-width: var(--page-width);
+  margin: 0 auto;
+}
+
+.section {
+  padding: 85px 0;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-soft);
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+
+.section-heading {
+  margin-bottom: 35px;
+}
+
+.section-heading .eyebrow {
+  margin-bottom: 12px;
+}
+
+.butterfly {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0;
+}
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 13px 23px;
+  background: var(--accent);
+  color: var(--white);
+  border: 1px solid var(--accent);
+  border-radius: 30px;
+  font-size: 13px;
+  transition: background 0.2s, transform 0.2s;
+}
+
+/* Flèche réservée au bouton « Retour en haut ». */
+.button-arrow {
+  margin-left: 12px;
+  font-size: 18px;
+  line-height: 1;
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  background: var(--text);
+  border-color: var(--text);
+  color: var(--white);
+}
+
+.skip-link {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  z-index: 20;
+  padding: 10px 20px;
+  background: var(--text);
+  color: var(--white);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+  color: var(--white);
+}
+
+/* ==================================================
+   4. EN-TÊTE ET MENU
+   ================================================== */
+
+.header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 90px;
+  border-bottom: 1px solid var(--border);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--accent);
+  font-family: var(--font-title);
+  font-size: 39px;
+  font-style: italic;
+  line-height: 1;
+}
+
+.navigation {
+  display: flex;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.navigation a {
+  padding: 8px 14px;
+  border-radius: 20px;
+  transition: background 0.2s;
+}
+
+.navigation a:hover {
+  background: var(--pink);
+}
+
+.menu-button {
+  display: none;
+}
+
+/* ==================================================
+   5. PRÉSENTATION ET PHOTO
+   ================================================== */
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  align-items: center;
+  gap: 65px;
+  padding-top: 70px;
+  padding-bottom: 70px;
+}
+
+.hero h1 {
+  margin: 25px 0 32px;
+  font-family: var(--font-title);
+  font-size: clamp(100px, 11vw, 150px);
+  line-height: 0.95;
+  letter-spacing: -5px;
+}
+
+.hero h1 em {
+  color: var(--accent);
+}
+
+/* Le prénom et le nom ont volontairement des tailles différentes. */
+.surname {
+  display: block;
+  margin-top: 17px;
+  color: var(--text);
+  font-size: 39px;
+  letter-spacing: 7px;
+  text-transform: uppercase;
+}
+
+.hello {
+  margin-bottom: 17px;
+  font-size: 28px;
+}
+
+.hero-text > p:not(.eyebrow) {
+  max-width: 475px;
+  margin-bottom: 13px;
+  color: var(--text-soft);
+  font-size: 15px;
+}
+
+.qualities {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 23px 0;
+}
+
+.qualities span {
+  padding: 4px 12px;
+  background: var(--pink-soft);
+  border: 1px solid var(--pink);
+  border-radius: 20px;
+  font-size: 11px;
+}
+
+.hero-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 23px;
+  margin-top: 25px;
+}
+
+.portrait-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 520px;
+  isolation: isolate;
+}
+
+/* Le fond rose est indépendant de la photo. */
+.portrait-area::before {
+  content: '';
+  position: absolute;
+  width: 92%;
+  height: 88%;
+  background: var(--pink);
+  border-radius: 48% 48% 5px 5px;
+  opacity: 0.7;
+  transform: rotate(-6deg);
+}
+
+/* Un contour fin accompagne le fond rose. */
+.portrait-area::after {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 12px;
+  right: 0;
+  width: 88%;
+  height: 88%;
+  border: 1px solid var(--border);
+  border-radius: 48% 48% 5px 5px;
+  transform: rotate(7deg);
+}
+
+.portrait-note {
+  position: absolute;
+  top: -13px;
+  right: 5px;
+  color: var(--accent);
+  font-family: var(--font-title);
+  font-size: 25px;
+  font-style: italic;
+  transform: rotate(7deg);
+}
+
+.flight-path {
+  position: absolute;
+  top: 3px;
+  left: -18px;
+  width: 150px;
+  opacity: 0.6;
+}
+
+.portrait {
+  position: relative;
+  width: 320px;
+  padding: 14px 14px 0;
+  background: var(--white);
+  box-shadow: 5px 10px 25px #40342915;
+  transform: rotate(4deg);
+  transition: transform 0.3s;
+}
+
+.portrait:hover {
+  transform: rotate(1deg);
+}
+
+.portrait-photo {
+  width: 100%;
+  height: 365px;
+  object-fit: cover;
+  object-position: center 39%;
+}
+
+.portrait figcaption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  min-height: 60px;
+  font-family: var(--font-title);
+  font-size: 21px;
+  font-style: italic;
+}
+
+.tape {
+  position: absolute;
+  top: -14px;
+  left: calc(50% - 50px);
+  width: 100px;
+  height: 28px;
+  background: #ded0b5b8;
+  transform: rotate(-8deg);
+}
+
+.portrait-butterfly {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  width: 85px;
+  height: 85px;
+  transform: rotate(-15deg);
+}
+
+/* Une petite ligne des centres d'intérêt sépare les rubriques. */
+.universe-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 20px;
+  padding: 22px 0;
+  border-top: 1px solid var(--border);
+  color: var(--accent);
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-style: italic;
+}
+
+/* ==================================================
+   6. PROJETS
+   Ajouter les projets dans index.html.
+   ================================================== */
+
+.projects {
+  background: var(--background-soft);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.projects-placeholder,
+.project {
+  padding: 35px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.projects-placeholder {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: center;
+  gap: 60px;
+}
+
+/* Le petit carnet est dessiné uniquement avec du CSS. */
+.project-art {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 225px;
+  padding: 25px;
+  background: var(--pink);
+  border: 8px solid var(--white);
+  box-shadow: 5px 8px 0 #302c2808;
+  transform: rotate(-3deg);
+}
+
+.project-art-title {
+  font-family: var(--font-title);
+  font-size: 25px;
+  font-style: italic;
+}
+
+.project-code {
+  margin-top: 5px;
+  color: var(--accent);
+  font-family: var(--font-title);
+  font-size: 67px;
+  line-height: 1.4;
+}
+
+.project-art img {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  width: 65px;
+}
+
+.projects .project-description h3 {
+  margin: 15px 0;
+  font-size: 37px;
+  line-height: 1.15;
+}
+
+.projects h3 {
+  margin-bottom: 8px;
+  font-family: var(--font-title);
+  font-size: 28px;
+}
+
+.projects p:not(.eyebrow) {
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+.projects .button {
+  margin-top: 18px;
+}
+
+.project + .project {
+  margin-top: 20px;
+}
+
+/* ==================================================
+   7. CV : FORMATIONS, EXPÉRIENCES, COMPÉTENCES,
+   CENTRES D'INTÉRÊT ET LANGUES
+   ================================================== */
+
+.resume-heading {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.resume-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.resume-block {
+  padding: 30px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+/* Chaque carte conserve une nuance douce. */
+.experience-card {
+  background: var(--pink-soft);
+}
+
+.skills-card {
+  background: var(--sage);
+}
+
+.interests-card {
+  background: var(--background-soft);
+}
+
+.card-heading {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+  margin-bottom: 27px;
+}
+
+.card-number {
+  color: var(--accent);
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-style: italic;
+}
+
+.resume-block h3 {
+  margin-bottom: 0;
+  color: var(--accent);
+  font-family: var(--font-title);
+  font-size: 29px;
+  line-height: 1.2;
+}
+
+.resume-block h4 {
+  margin-bottom: 9px;
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.resume-block p,
+.resume-block li {
+  color: var(--text-soft);
+  font-size: 14px;
+}
+
+.resume-block p + p {
+  margin-top: 7px;
+}
+
+/* Une ligne légère relie les étapes du parcours. */
+.resume-item {
+  margin-bottom: 25px;
+  padding-left: 18px;
+  border-left: 1px solid var(--accent);
+}
+
+.resume-item:last-child {
+  margin-bottom: 0;
+}
+
+.resume-block .date {
+  margin-bottom: 8px;
+  color: var(--accent);
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding: 0;
+  margin: 15px 0 20px;
+  list-style: none;
+}
+
+.skill-tags li {
+  margin: 0;
+  padding: 5px 14px;
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  color: var(--text);
+  font-size: 12px;
+}
+
+.languages-title {
+  margin-top: 25px;
+}
+
+/* ==================================================
+   8. CONTACT ET PIED DE PAGE
+   ================================================== */
+
+.contact {
+  background: var(--background-soft);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+/* Le titre garde son alignement avec le reste de la page.
+   La deuxième colonne occupe l'espace jusqu'au bord droit de la page. */
+.contact-layout {
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 0;
+  width: auto;
+  max-width: none;
+  margin-left: max(32px, calc((100% - var(--page-width)) / 2));
+  margin-right: 0;
+}
+
+.contact .section-heading {
+  margin-bottom: 0;
+}
+
+.contact .section-heading > .butterfly {
+  margin-bottom: 17px;
+}
+
+.contact .button {
+  margin-top: 25px;
+}
+
+
+.contact-card {
+  justify-self: center;
+  align-self: start;
+  width: min(520px, calc(100% - 48px));
+  padding: 28px 30px;
+  background: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+.contact-card-title {
+  margin-bottom: 12px;
+  font-family: var(--font-title);
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+.contact-card-title::after {
+  content: '';
+  display: block;
+  width: 42px;
+  height: 2px;
+  margin-top: 13px;
+  background: var(--accent);
+}
+
+.contact-details {
+  font-style: normal;
+}
+
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.contact-row:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background: var(--pink-soft);
+  color: var(--accent);
+  border-radius: 50%;
+}
+
+/* Le dessin des icônes reste fin, comme celui des papillons. */
+.contact-icon svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.contact-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.contact-label {
+  display: block;
+  margin-bottom: 4px;
+  color: var(--text-soft);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.contact-value {
+  display: block;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* Les lignes cliquables sont celles du téléphone, de l'e-mail et de GitHub. */
+a.contact-row:hover .contact-icon {
+  background: var(--pink);
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  color: var(--text-soft);
+  font-size: 11px;
+}
+
+/* ==================================================
+   9. TABLETTES
+   Les règles ci-dessous s'appliquent uniquement
+   lorsque l'écran fait au maximum 1000 pixels.
+   ================================================== */
+
+@media (max-width: 1000px) {
+  .hero {
+    gap: 35px;
+  }
+
+  .portrait {
+    width: 280px;
+  }
+
+  .portrait-photo {
+    height: 320px;
+  }
+
+  .portrait-area {
+    min-height: 450px;
+  }
+
+  .resume-grid {
+    gap: 40px;
+  }
+}
+
+/* ==================================================
+   10. TÉLÉPHONES ET PETITS ÉCRANS
+   ================================================== */
+
+@media (max-width: 760px) {
+  .container {
+    width: calc(100% - 40px);
+  }
+
+  .section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  h2 {
+    font-size: 43px;
+  }
+
+  .header {
+    min-height: 75px;
+  }
+
+  .menu-button {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    background: transparent;
+    border: 0;
+  }
+
+  .menu-button span {
+    width: 22px;
+    height: 1px;
+    background: var(--text);
+  }
+
+  .navigation {
+    display: none;
+    position: absolute;
+    top: 74px;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    flex-direction: column;
+    gap: 4px;
+    padding: 15px 20px;
+    background: var(--background);
+    border: 1px solid var(--border);
+  }
+
+  .navigation.is-open {
+    display: flex;
+  }
+
+  .navigation a {
+    padding: 10px 0;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 35px;
+    padding-top: 40px;
+    padding-bottom: 50px;
+  }
+
+  .hero h1 {
+    font-size: clamp(90px, 20vw, 120px);
+    letter-spacing: -3px;
+  }
+
+  .surname {
+    font-size: 32px;
+    letter-spacing: 5px;
+  }
+
+  .hero .eyebrow {
+    font-size: 9px;
+    letter-spacing: 1.2px;
+  }
+
+  .hello {
+    font-size: 27px;
+  }
+
+  .hero-text > p:not(.eyebrow) {
+    max-width: none;
+    font-size: 14px;
+  }
+
+  .hero-links {
+    gap: 20px;
+  }
+
+  .portrait {
+    width: min(280px, calc(100% - 24px));
+  }
+
+  .portrait-area {
+    width: 100%;
+    max-width: 360px;
+    min-height: 450px;
+    margin: 0 auto;
+  }
+
+  .portrait-butterfly {
+    width: 70px;
+    height: 70px;
+  }
+
+  .resume-heading {
+    align-items: start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .universe-strip {
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 17px;
+  }
+
+  .universe-strip .butterfly {
+    width: 22px;
+    height: 22px;
+  }
+
+  .portrait-note {
+    top: -5px;
+    font-size: 22px;
+  }
+
+  .flight-path {
+    left: 0;
+    width: 115px;
+  }
+
+  .projects-placeholder {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .project-art {
+    width: 95%;
+    max-width: 360px;
+    min-height: 195px;
+    margin: 0 auto;
+  }
+
+  .projects .project-description h3 {
+    font-size: 32px;
+  }
+
+  .resume-block {
+    padding: 25px 22px;
+  }
+
+  .card-heading {
+    gap: 12px;
+  }
+
+  .contact-card {
+    justify-self: stretch;
+    width: 100%;
+    padding: 25px 20px;
+  }
+
+  .contact-layout {
+    width: calc(100% - 40px);
+    max-width: var(--page-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .contact-row {
+    gap: 12px;
+  }
+
+  .contact-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .contact-value {
+    font-size: 13px;
+  }
+
+  .resume-grid,
+  .contact-layout {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .resume-block h3 {
+    font-size: 28px;
+  }
+
+  .projects-placeholder,
+  .project {
+    padding: 25px 20px;
+  }
+
+  .projects h3 {
+    font-size: 25px;
+  }
+
+  .footer {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .footer .butterfly {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/*  réduire les animations. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .button,
+  .navigation a,
+  .portrait {
+    transition: none;
+  }
+}
